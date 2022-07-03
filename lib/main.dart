@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:network_service_home_assignment/model/Employee.dart';
+import 'package:network_service_home_assignment/model/data_model.dart';
+import 'package:network_service_home_assignment/pages/detail_page.dart';
 import 'package:network_service_home_assignment/services/network_service.dart';
 
 import 'pages/home_page.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: const HomePage(),
       routes: {
+        DetailPage.id: (context) => DetailPage(),
         HomePage.id: (context) => const HomePage(),
       },
     );

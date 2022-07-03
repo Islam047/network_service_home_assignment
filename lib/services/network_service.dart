@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:network_service_home_assignment/model/Employee.dart';
+import 'package:network_service_home_assignment/model/data_model.dart';
+import 'package:network_service_home_assignment/model/emp_model.dart';
+import 'package:network_service_home_assignment/model/emp_one_model.dart';
 
 class NetworkService {
   /* API header */
@@ -20,7 +22,7 @@ class NetworkService {
   static const String API_PUT = '/api/v1/update/'; // {id}
   static const String API_DELETE = '/api/v1/delete/'; // {id}
 
-  /* API Methods */
+  /* API Request */
 
   static Future<String?> GET(String api, Map<String, String> params) async {
     Uri uri = Uri.https(BASE, api, params);
@@ -88,5 +90,16 @@ class NetworkService {
     });
 
     return map;
+  }
+/* API Parsing */
+static EmpList parseEmpList(String response){
+  dynamic json = jsonDecode(response);
+  var data = EmpList.fromJson(json);
+  return data;
+}
+  static EmpOne parseEmpOne(String response){
+    dynamic json = jsonDecode(response);
+    var data = EmpOne.fromJson(json);
+    return data;
   }
 }
